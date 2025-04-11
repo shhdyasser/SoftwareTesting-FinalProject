@@ -26,6 +26,7 @@ public class PageBase {
 
     public void sendKeys(By element,String value){
         waitTimeToBeVisible(element);
+        clearText(element);
         driver.findElement(element).sendKeys(value);
     }
 
@@ -33,6 +34,12 @@ public class PageBase {
         waitTimeToBeVisible(element);
         waitTimeToBeClickable(element);
         driver.findElement(element).click();
+    }
+
+    public void clearText(By element) {
+        waitTimeToBeVisible(element);
+        waitTimeToBeClickable(element);
+        driver.findElement(element).clear();
     }
 
      public String getCurrentURL(){

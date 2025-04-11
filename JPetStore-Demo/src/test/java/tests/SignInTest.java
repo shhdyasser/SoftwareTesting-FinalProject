@@ -20,11 +20,10 @@ public class SignInTest extends TestBase{
     public void LoginWithValidUsernameAndValidPassword() throws InterruptedException {
         System.out.println(driver);
         signInPage.clickSignIn();
-        signInPage.fillUserName("");
-        signInPage.fillPassword("");
+        signInPage.fillUserName("j2ee");
+        signInPage.fillPassword("j2ee");
         signInPage.clickOnLoginButton();
         Thread.sleep(5000);
-
 
     }
 

@@ -26,6 +26,7 @@ public class PageBase {
 
     public void sendKeys(By element,String value){
         waitTimeToBeVisible(element);
+        clearText(element);
         driver.findElement(element).sendKeys(value);
     }
 
@@ -35,13 +36,26 @@ public class PageBase {
         driver.findElement(element).click();
     }
 
-     public String getCurrentURL(){
+    public void clearText(By element) {
+        waitTimeToBeVisible(element);
+        waitTimeToBeClickable(element);
+        driver.findElement(element).clear();
+    }
+
+    public void setCheckbox(By locator, boolean enable) {
+        boolean isSelected = driver.findElement(locator).isSelected();
+        if ((enable && !isSelected) || (!enable && isSelected)) {
+            clickOnElement(locator);
+        }
+    }
+
+    public String getCurrentURL(){
          return driver.getCurrentUrl().toString();
      }
 
-    public void scrollDown() {
+    public void scrollDown(String position) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,1070)");
+        js.executeScript(position);
     }
     public void selectFromDropDownList(By element,String option){
         Select options = new Select(driver.findElement(element));

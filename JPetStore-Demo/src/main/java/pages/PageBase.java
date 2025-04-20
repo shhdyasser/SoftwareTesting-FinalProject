@@ -50,6 +50,7 @@ public class PageBase {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1070)");
     }
+    
     public void selectFromDropDownList(By element,String option){
         Select options = new Select(driver.findElement(element));
         options.selectByVisibleText(option);

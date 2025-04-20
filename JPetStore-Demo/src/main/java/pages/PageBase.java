@@ -57,6 +57,7 @@ public class PageBase {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(position);
     }
+    
     public void selectFromDropDownList(By element,String option){
         Select options = new Select(driver.findElement(element));
         options.selectByVisibleText(option);

@@ -42,13 +42,20 @@ public class PageBase {
         driver.findElement(element).clear();
     }
 
-     public String getCurrentURL(){
+    public void setCheckbox(By locator, boolean enable) {
+        boolean isSelected = driver.findElement(locator).isSelected();
+        if ((enable && !isSelected) || (!enable && isSelected)) {
+            clickOnElement(locator);
+        }
+    }
+
+    public String getCurrentURL(){
          return driver.getCurrentUrl().toString();
      }
 
-    public void scrollDown() {
+    public void scrollDown(String position) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,1070)");
+        js.executeScript(position);
     }
     
     public void selectFromDropDownList(By element,String option){

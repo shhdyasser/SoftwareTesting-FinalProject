@@ -32,13 +32,11 @@ public class SignUpPage extends PageBase {
 
     // Navigation
     public void clickSignUp() {
-        scrollDown("window.scrollBy(0,368.79998779296875)");
         clickOnElement(signUp);
     }
 
     // Text field methods
     public void fillUserId(String name) {
-        scrollDown("window.scrollBy(0,368.79998779296875)");
         sendKeys(userId, name);
     }
 
@@ -67,7 +65,6 @@ public class SignUpPage extends PageBase {
     }
 
     public void fillAddress1(String addr1) {
-        scrollDown("window.scrollBy(0,857.5999755859375)");
         sendKeys(address1, addr1);
     }
 
@@ -108,7 +105,6 @@ public class SignUpPage extends PageBase {
     public void enableBannerOption(boolean enable) {
         setCheckbox(bannerOption, enable);
     }
-
 
     public void clickOnSignUpButton() {
         clickOnElement(SignUpButton);

@@ -3,7 +3,7 @@ package tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BirdsPage;
-import pages.CatsPage;
+
 
 public class BirdsTest extends TestBase {
     BirdsPage birdsPage;

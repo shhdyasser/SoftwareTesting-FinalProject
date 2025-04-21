@@ -106,15 +106,6 @@ public class SignUpPage extends PageBase {
         setCheckbox(bannerOption, enable);
     }
 
-    // Helper method for checkboxes
-    private void setCheckbox(By locator, boolean enable) {
-        boolean isSelected = driver.findElement(locator).isSelected();
-        if ((enable && !isSelected) || (!enable && isSelected)) {
-            clickOnElement(locator);
-        }
-    }
-
-
     public void clickOnSignUpButton() {
         clickOnElement(SignUpButton);
     }

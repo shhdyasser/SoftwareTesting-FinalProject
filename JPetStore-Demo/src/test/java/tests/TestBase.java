@@ -17,8 +17,9 @@ public class TestBase {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
         driver.get("https://jpetstore.aspectran.com/");
-        System.out.println(driver.getCurrentUrl());
+
     }
 
     @AfterMethod

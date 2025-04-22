@@ -3,23 +3,27 @@ package tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BirdsPage;
+import pages.SignInPage;
 
 
 public class BirdsTest extends TestBase {
     BirdsPage birdsPage;
+    SignInPage signInPage;
 
     @BeforeMethod
     public void init() {
+
         birdsPage = new BirdsPage(driver);
+        signInPage = new SignInPage(driver);
     }
 
     @Test
     public void BirdsPageTestUntilCheckout() throws InterruptedException {
         System.out.println(driver);
-        birdsPage.clickSignIn();
-        birdsPage.fillUserName("salem");
-        birdsPage.fillPassword("Passw0rd123");
-        birdsPage.clickOnLoginButton();
+        signInPage.clickSignIn();
+        signInPage.fillUserName("j2ee");
+        signInPage.fillPassword("j2ee");
+        signInPage.clickOnLoginButton();
         Thread.sleep(3000);
 
         birdsPage.clickOnBirdsTab();

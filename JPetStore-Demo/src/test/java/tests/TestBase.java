@@ -18,7 +18,7 @@ public class TestBase {
         options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         driver.get("https://jpetstore.aspectran.com/");
-        System.out.println(driver.getCurrentUrl());
+
     }
 
     @AfterMethod

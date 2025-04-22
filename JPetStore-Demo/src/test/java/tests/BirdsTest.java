@@ -46,8 +46,5 @@ public class BirdsTest extends TestBase {
         Thread.sleep(3000);
         birdsPage.clickOnConfirmBtn();
         Thread.sleep(3000);
-
-
-
     }
 }

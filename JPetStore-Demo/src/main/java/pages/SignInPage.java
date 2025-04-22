@@ -15,18 +15,22 @@ public class SignInPage extends  PageBase{
     }
 
     public void clickSignIn(){
+        scrollDown("window.scrollBy(0,368.79998779296875)");
         clickOnElement(signIn);
     }
 
     public void fillUserName(String name){
+        scrollDown("window.scrollBy(0,368.79998779296875)");
         sendKeys(userName,name);
     }
 
     public void fillPassword(String password){
+
         sendKeys(this.password,password);
     }
 
     public void clickOnLoginButton() {
+
         clickOnElement(loginButton);
     }
 }

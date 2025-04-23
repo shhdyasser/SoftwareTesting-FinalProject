@@ -1,5 +1,6 @@
 package tests;
 
+import Helper.LoginHelper;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BirdsPage;
@@ -8,23 +9,18 @@ import pages.SignInPage;
 
 public class BirdsTest extends TestBase {
     BirdsPage birdsPage;
-    SignInPage signInPage;
+    LoginHelper loginHelper;
 
     @BeforeMethod
     public void init() {
-
         birdsPage = new BirdsPage(driver);
-        signInPage = new SignInPage(driver);
+        loginHelper = new LoginHelper(driver);
     }
 
     @Test
     public void BirdsPageTestUntilCheckout() throws InterruptedException {
         System.out.println(driver);
-        signInPage.clickSignIn();
-        signInPage.fillUserName("j2ee");
-        signInPage.fillPassword("j2ee");
-        signInPage.clickOnLoginButton();
-        Thread.sleep(3000);
+        loginHelper.login("salem","Passw0rd123");
 
         birdsPage.clickOnBirdsTab();
         Thread.sleep(2000);

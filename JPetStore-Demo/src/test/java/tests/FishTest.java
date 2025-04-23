@@ -1,5 +1,6 @@
 package tests;
 
+import Helper.LoginHelper;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.FishPage;
@@ -8,23 +9,20 @@ import pages.SignInPage;
 public class FishTest extends TestBase{
 
     FishPage fishPage;
-    SignInPage signInPage;
+    LoginHelper loginHelper;
 
 
     @BeforeMethod
     public void init(){
-        signInPage = new SignInPage(driver);
+        loginHelper = new LoginHelper(driver);
         fishPage = new FishPage(driver);
     }
 
     @Test
     public void FishTestUntilCheckout() throws InterruptedException {
         System.out.println(driver);
-        signInPage.clickSignIn();
-        signInPage.fillUserName("j2ee");
-        signInPage.fillPassword("j2ee");
-        signInPage.clickOnLoginButton();
-        Thread.sleep(3000);
+        loginHelper.login("salem","Passw0rd123");
+
         fishPage.ClickOnFishPage();
         Thread.sleep(3000);
         fishPage.AngelFish();

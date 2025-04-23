@@ -9,7 +9,6 @@ public class SignInTest extends TestBase{
 
     SignInPage signInPage;
 
-
     @BeforeMethod
     public void init(){
         signInPage = new SignInPage(driver);
@@ -24,7 +23,6 @@ public class SignInTest extends TestBase{
         signInPage.fillPassword("j2ee");
         signInPage.clickOnLoginButton();
         Thread.sleep(5000);
-
     }
 
 }

@@ -19,7 +19,7 @@ public class TestBase {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://jpetstore.aspectran.com/");
-        System.out.println(driver.getCurrentUrl());
+
     }
 
     @AfterMethod

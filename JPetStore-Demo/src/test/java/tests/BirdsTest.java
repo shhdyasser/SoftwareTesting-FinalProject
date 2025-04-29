@@ -1,10 +1,11 @@
 package tests;
 
 import Helper.LoginHelper;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BirdsPage;
-import pages.SignInPage;
+
 
 
 public class BirdsTest extends TestBase {
@@ -15,36 +16,53 @@ public class BirdsTest extends TestBase {
     public void init() {
         birdsPage = new BirdsPage(driver);
         loginHelper = new LoginHelper(driver);
+        loginHelper.login("salem", "Passw0rd123");
     }
 
-    @Test
-    public void BirdsPageTestUntilCheckout() throws InterruptedException {
-        System.out.println(driver);
-        loginHelper.login("salem","Passw0rd123");
-
+    @Test(priority = 1)
+    public void verifyBirdsCategoriesLoad() {
         birdsPage.clickOnBirdsTab();
-        Thread.sleep(2000);
+        Assert.assertEquals(birdsPage.isCategoryHeaderDisplayed(), "Birds");
+    }
+
+    @Test(priority = 2)
+    public void testAmazonParrotAdoption() {
+        birdsPage.clickOnBirdsTab();
         birdsPage.clickOnAmazonParrotTab();
-        Thread.sleep(2000);
-        birdsPage.clickOnMaleAmazonParrotTab();
-        Thread.sleep(3000); //the checkout page
         birdsPage.clickOnAddAmazonParrotToCartBtn();
+        Assert.assertEquals(birdsPage.getCartCount(), "1");
+    }
+
+    @Test(priority = 3)
+    public void testFinchAdoption() {
+        birdsPage.clickOnBirdsTab();
+        birdsPage.clickOnFinch();
+        birdsPage.clickOnAddFinchToCartBtn();
+        Assert.assertEquals(birdsPage.isItemInCart(), "EST-19");
+    }
+
+    @Test(priority = 4)
+    public void testCheckoutProcess() throws InterruptedException {
+        birdsPage.clickOnBirdsTab();
+        birdsPage.clickOnAmazonParrotTab();
+        birdsPage.clickOnAddAmazonParrotToCartBtn();
+        birdsPage.clickOnCheckoutTab();
         Thread.sleep(3000);
+        Assert.assertEquals(birdsPage.isCheckoutHeaderDisplayed(), "Payment Details");
+    }
+
+    @Test(priority = 5)
+    public void testMultipleItemCart() {
+        birdsPage.clickOnBirdsTab();
+        birdsPage.clickOnAmazonParrotTab();
+        birdsPage.clickOnAddAmazonParrotToCartBtn();
 
         birdsPage.clickOnBirdsTab();
-        Thread.sleep(2000);
         birdsPage.clickOnFinch();
-        Thread.sleep(2000);
-        birdsPage.clickOnMaleFinch();
-        Thread.sleep(3000); //the checkout page
         birdsPage.clickOnAddFinchToCartBtn();
-        Thread.sleep(3000);
 
-        birdsPage.clickOnCheckoutTab();
-        Thread.sleep(4000);
-        birdsPage.clickOnContinueBtn();
-        Thread.sleep(3000);
-        birdsPage.clickOnConfirmBtn();
-        Thread.sleep(3000);
+        Assert.assertEquals(birdsPage.getCartCount(), "2", "Cart should contain 2 items");
+
+
     }
 }

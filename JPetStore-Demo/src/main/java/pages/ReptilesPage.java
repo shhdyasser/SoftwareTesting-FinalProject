@@ -23,7 +23,7 @@ public class ReptilesPage extends PageBase{
     public ReptilesPage(WebDriver driver){
         super(driver);
     }
-    public void clickOnReprilesTab(){
+    public void clickOnReptilesTab(){
         scrollDown("window.scrollBy(0,368.79998779296875)");
         clickOnElement(reptilesTab);
     }
@@ -31,6 +31,11 @@ public class ReptilesPage extends PageBase{
         scrollDown("window.scrollBy(0,368.79998779296875)");
         clickOnElement(rattleSnakeTab);
     }
+    public void clickOnVenomlessSnakeTab(){
+        scrollDown("window.scrollBy(0,368.79998779296875)");
+        clickOnElement(venomlessRattlesnake);
+    }
+
     public void clickOnRattlelessSnackTab(){
         scrollDown("window.scrollBy(0,368.79998779296875)");
         clickOnElement(rattlelessRattlesnake);

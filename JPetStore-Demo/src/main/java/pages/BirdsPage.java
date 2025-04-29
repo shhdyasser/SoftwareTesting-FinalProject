@@ -33,10 +33,10 @@ public class BirdsPage extends PageBase {
         clickOnElement(birdsTab);
     }
 
-  public void clickOnAmazonParrotTab(){
-      scrollDown("window.scrollBy(0,368.79998779296875)");
-      clickOnElement(amazonParrotTab);
-  }
+    public void clickOnAmazonParrotTab(){
+        scrollDown("window.scrollBy(0,368.79998779296875)");
+        clickOnElement(amazonParrotTab);
+    }
     public void clickOnMaleAmazonParrotTab(){
         scrollDown("window.scrollBy(0,368.79998779296875)");
         clickOnElement(maleAmazonParrot);

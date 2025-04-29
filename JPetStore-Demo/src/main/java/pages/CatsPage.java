@@ -1,14 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class CatsPage extends PageBase {
-
-    By signIn = By.xpath("//*[@id=\"Menu\"]/div[1]/a[2]");
-    By userName = By.name("username");
-    By password =By.name("password");
-    By loginButton = By.xpath("//*[@id=\"Signon\"]/form/div/div/button");
     By catsTab = By.xpath("//div[@id='QuickLinks']/a[text()='Cats']");
 
     By manxTab = By.xpath("//tr/td/a[text()='FL-DSH-01']");
@@ -20,29 +16,14 @@ public class CatsPage extends PageBase {
     By malePersianTab = By.xpath("//a[@href='/cart/addItemToCart?itemId=EST-17']");
 
     By checkoutTab = By.xpath("//a[@href='/order/newOrderForm']");
+    By categoryHeader = By.xpath("//h3");
+    By itemLocator = By.xpath("//a[contains(@href, 'items')]");
+    By checkoutHeader = By.xpath("/html/body/section/div[2]/div[2]/div/form/h3[1]");
+
+    JavascriptExecutor js = (JavascriptExecutor)driver;
 
     public CatsPage(WebDriver driver) {
         super(driver);
-    }
-
-    public void clickSignIn(){
-        scrollDown("window.scrollBy(0,368.79998779296875)");
-        clickOnElement(signIn);
-    }
-
-    public void fillUserName(String name){
-        scrollDown("window.scrollBy(0,368.79998779296875)");
-        sendKeys(userName,name);
-    }
-
-    public void fillPassword(String password){
-
-        sendKeys(this.password,password);
-    }
-
-    public void clickOnLoginButton() {
-
-        clickOnElement(loginButton);
     }
 
     public void clickOncatsTab() {
@@ -83,6 +64,26 @@ public class CatsPage extends PageBase {
     public void clickOnCheckoutTab() {
         scrollDown("window.scrollBy(0,368.79998779296875)");
         clickOnElement(checkoutTab);
+    }
+
+    public String isCategoryHeaderDisplayed() {
+        return driver.findElement(categoryHeader).getText();
+    }
+
+    public String getCartCount() {
+        return js.executeScript(
+                "return document.evaluate(" +
+                        "'//img[@name=\"img_cart\"]/following-sibling::text()[1]'," +
+                        "document, null, XPathResult.STRING_TYPE, null).stringValue.trim();"
+        ).toString();
+    }
+
+    public String isItemInCart() {
+        return driver.findElement(itemLocator).getText();
+    }
+
+    public String isCheckoutHeaderDisplayed() {
+        return driver.findElement(checkoutHeader).getText();
     }
 
 }

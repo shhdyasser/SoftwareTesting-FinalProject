@@ -63,4 +63,13 @@ public class PageBase {
         options.selectByVisibleText(option);
     }
 
+    public boolean isElementDisplayed(By locator) {
+        try {
+            waitTimeToBeVisible(locator);
+            return driver.findElement(locator).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
